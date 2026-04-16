@@ -1,0 +1,20 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: retail-forecast-backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: retail-forecast-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
