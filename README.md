@@ -120,10 +120,10 @@ docker compose down
 Ung dung doc bien moi truong trong `backend/.env`:
 
 ```env
-DATABRICKS_HOST=dbc-77dd6648-56bb.cloud.databricks.com
-DATABRICKS_HTTP_PATH=/sql/1.0/warehouses/71873e4747976257
-DATABRICKS_TOKEN=<your_databricks_token>
-DATABRICKS_TABLE=duanck.ckcloud.reorder_output
+DATABRICKS_HOST=tu them
+DATABRICKS_HTTP_PATH=tu them
+DATABRICKS_TOKEN=tu them
+DATABRICKS_TABLE=tu them
 ```
 
 Bang du lieu su dung duy nhat:
