@@ -70,23 +70,51 @@ retail-forecast-app/
 └── .gitignore
 ```
 
-## 6. Huong dan chay local
+## 6. Huong dan cai dat va chay du an
+
+Neu ban muon ban huong dan chi tiet hon theo tung buoc (kèm troubleshooting), xem them file `run.md`.
+
+### Yeu cau truoc khi chay
+
+- **Python 3.11** (khuyen dung, giong moi truong Docker). Tranh dung Python 3.13 vi de bi loi khi cai `numpy/databricks-sql-connector` tren Windows.
+- **Node.js LTS (>= 18)** de chay frontend.
+- **Docker Desktop** (neu chay bang Docker Compose).
+
+### Luu y quan trong ve .env / token
+
+- File `backend/.env` chua token Databricks. **Khong commit len GitHub**.
+- Repo da co san `backend/.env.example` de chia se mau cau hinh.
 
 ### Backend
 
-```bash
-cd backend
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
+Chay tren Windows PowerShell tai thu muc `backend`:
+
+```powershell
+cd "D:\Cloud cuối kì\retail-forecast-app\backend"
+
+# (Tuy chon) Xoa venv cu neu can lam sach
+Remove-Item -Recurse -Force .venv -ErrorAction SilentlyContinue
+
+# Tao venv bang Python 3.11
+py -3.11 -m venv .venv
+
+# Kich hoat venv
+& .venv\Scripts\Activate.ps1
+
+# Cai dependencies
+python -m pip install -U pip
 pip install -r requirements.txt
+
+# Chay server
 uvicorn app.main:app --reload --port 8000
 ```
 
 ### Frontend
 
-```bash
-cd frontend
+Mo 1 terminal moi, chay tai thu muc `frontend`:
+
+```powershell
+cd "D:\Cloud cuối kì\retail-forecast-app\frontend"
 npm install
 npm run dev
 ```
@@ -100,7 +128,7 @@ Mo trinh duyet tai:
 
 Tai thu muc goc du an:
 
-```bash
+```powershell
 docker compose up --build
 ```
 
@@ -111,7 +139,7 @@ Truy cap:
 
 Dung he thong:
 
-```bash
+```powershell
 docker compose down
 ```
 
@@ -126,7 +154,12 @@ DATABRICKS_TOKEN=tu them
 DATABRICKS_TABLE=tu them
 ```
 
-Bang du lieu su dung duy nhat:
+Luu y:
+
+- `DATABRICKS_TABLE` la ten **day du** theo dang `catalog.schema.table_or_view`.
+- Neu vao dashboard bi loi `TABLE_OR_VIEW_NOT_FOUND`, hay cap nhat `DATABRICKS_TABLE` theo dung ten bang/view ban thay tren Databricks.
+
+Bang du lieu su dung (application layer chi query du lieu, khong tao pipeline moi):
 
 - `duanck.ckcloud.reorder_output`
 

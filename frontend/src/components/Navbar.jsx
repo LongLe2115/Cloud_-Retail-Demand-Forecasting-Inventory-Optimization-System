@@ -4,6 +4,10 @@ const menus = [
   { to: "/dashboard", label: "Dashboard" },
   { to: "/reorder", label: "Trung tam nhap hang" },
   { to: "/forecast", label: "Phan tich du bao" },
+  { to: "/monitoring", label: "Giam sat he thong" },
+  { to: "/future-planning", label: "Ke hoach tuong lai" },
+  { to: "/upload", label: "Upload Data" },
+  { to: "/add-sale", label: "Add Sale" },
 ];
 
 export default function Navbar() {
